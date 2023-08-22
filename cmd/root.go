@@ -14,6 +14,7 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "cobra-sample",
+	Args:  cobra.ExactArgs(2),
 	Short: "A brief description of your application",
 	Long: `A longer description that spans multiple lines and likely contains
 examples and usage of using your application. For example:
@@ -26,8 +27,8 @@ to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// mapの使用例
 		data := map[string]string{
-			"ARG1": "A1",
-			"ARG2": "A2",
+			"ARG1": args[0],
+			"ARG2": args[1],
 		}
 
 		// New(<ファイル名>).ParseFiles(<ひな形ファイル>)
